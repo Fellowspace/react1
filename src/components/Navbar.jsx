@@ -7,10 +7,11 @@ import '@fontsource/roboto';
 import { FiMenu, FiSearch, FiShoppingCart } from 'react-icons/fi';
 const Navbar = () => {
   return ( <nav className="navbar">
+    
       <div className="navbar-container">
         {/* Logo */}
         <div>
-         <a href="#" className="logo"><img src={Logo} style={{width: 80, height: 80}} alt="reslogo"/></a>
+         <a href="#" className="logo"><img src={Logo} style={{width: 160, height: 80}} alt="reslogo"/></a>
        
         </div>
 
@@ -23,27 +24,14 @@ const Navbar = () => {
            <li><a href="#contact">Contact</a></li>
           <li><a href="#blogs">Blogs</a></li>
         </ul>
-
-        {/* Right Buttons */}
-        <div className="nav-buttons">
-          <button className="btn">
-          <FiSearch className="icon" />
-          Search
-        </button>
-        <button className="btn">
-          <FiShoppingCart className="icon" />
-          Cart
-        </button>
-        <button className="btn">
-          <FiMenu className='icon' id="#menu-btn"/>
-        </button>
-        </div>
-      </div>
-      <div>
-        
-      </div>
+<div className='icons'>
+  <FiSearch className="nav-icon" />
+  <FiShoppingCart className="nav-icon" />
+  <FiMenu className="nav-icon menu-btn" />
+</div>
+</div>
+       
     </nav>
-  
     );
     
 };
