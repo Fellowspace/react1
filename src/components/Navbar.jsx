@@ -1,11 +1,16 @@
 
-import React from 'react';
-import Logo from "../assets/images/logo.jpg";
+import React ,{useRef} from "react";
+import Logo from "../assets/logo.jpg";
 import '@fontsource/roboto';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faShoppingCart, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FiMenu, FiSearch, FiShoppingCart } from 'react-icons/fi';
 const Navbar = () => {
+  const searchRef=useRef();
+  const searchHandler = () => {
+  console.log("Clicked Search");
+  searchRef.current.classList.toggle("active");
+};
   return ( <nav className="navbar">
     
       <div className="navbar-container">
@@ -25,12 +30,16 @@ const Navbar = () => {
           <li><a href="#blogs">Blogs</a></li>
         </ul>
 <div className='icons'>
-  <FiSearch className="nav-icon" />
+  <FiSearch className="nav-icon" onClick={searchHandler} />
   <FiShoppingCart className="nav-icon" />
   <FiMenu className="nav-icon menu-btn" />
 </div>
 </div>
-       
+       <div className="search-form " ref={searchRef}>
+        <input type="search" placeholder="search here...."id="search-box"/>
+    <FiSearch className="search-form-icon" />
+
+       </div>
     </nav>
     );
     
