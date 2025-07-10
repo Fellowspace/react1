@@ -445,7 +445,12 @@
    box-shadow: 0 0 12px #ffc107, 0 0 24px #ffea00;
   transform: translateY(-5px);
 }
+.menu-card .btn{
 
+   display: inline-block;
+  margin: 0 auto;
+
+}
 .menu-card img {
   width: 100%;
   height: 180px;
@@ -479,8 +484,8 @@
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
-  transition:0.3 ease;
-  animation: bounce 2s infinite;
+   transition: transform 0.3s ease;
+
 }
 
 
@@ -501,6 +506,7 @@ box-shadow: 0 0 12px #ffc107, 0 0 24px #ffea00;
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s ease;
+  display: inline-block;
 }
 
 .view-more-btn:hover {
@@ -518,4 +524,8 @@ box-shadow: 0 0 12px #ffc107, 0 0 24px #ffea00;
   60% {
     transform: translateY(-3px);
   }
+}
+.menu-card:hover .btn,
+.view-more-btn:hover {
+  animation: bounce 1.5s ease;
 }
