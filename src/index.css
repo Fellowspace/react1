@@ -390,10 +390,13 @@
     text-align: center;
   }
 }
-
-
-
-
+#review {
+  background: #111;
+  color: white;
+  padding: 4rem 2rem;
+  min-height: 300px;
+    border: 3px solid green;
+}
 .heading{
   text-align: center;
   background-color: #111;
@@ -418,6 +421,9 @@
 .heading {
   font-size: 2.5rem;
   margin-bottom: 2rem;
+  color:#ffa500;
+  border-bottom: #ff8c00;
+ 
 }
 
 .heading span {
@@ -445,18 +451,14 @@
    box-shadow: 0 0 12px #ffc107, 0 0 24px #ffea00;
   transform: translateY(-5px);
 }
-.menu-card .btn{
 
-   display: inline-block;
-  margin: 0 auto;
-
-}
 .menu-card img {
   width: 100%;
-  height: 180px;
+  height: 200px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
 }
+
 
 .menu-card h3 {
   margin: 1rem 0 0.5rem;
@@ -484,8 +486,8 @@
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
-   transition: transform 0.3s ease;
-
+  transition:0.3 ease;
+  animation: bounce 2s infinite;
 }
 
 
@@ -495,6 +497,8 @@ box-shadow: 0 0 12px #ffc107, 0 0 24px #ffea00;
 .view-more-container {
   text-align: center;
   margin-top: 2rem;
+  justify-content: center;
+  margin-left: 570px;
 }
 
 .view-more-btn {
@@ -506,7 +510,6 @@ box-shadow: 0 0 12px #ffc107, 0 0 24px #ffea00;
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s ease;
-  display: inline-block;
 }
 
 .view-more-btn:hover {
@@ -525,7 +528,267 @@ box-shadow: 0 0 12px #ffc107, 0 0 24px #ffea00;
     transform: translateY(-3px);
   }
 }
-.menu-card:hover .btn,
-.view-more-btn:hover {
-  animation: bounce 1.5s ease;
+
+.success-message {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background-color:white;
+  color: black;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  z-index: 1000;
+  animation: fadeInOut 2.5s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+@keyframes fadeInOut {
+  0%   { opacity: 0; transform: translateY(-10px); }
+  10%  { opacity: 1; transform: translateY(0); }
+  90%  { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+.cart-dropdown {
+  position: absolute;
+  top: 100px;
+  right: 20px;
+  background:white;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  width: 250px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.cart-dropdown h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.cart-dropdown ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 10px;
+}
+
+.cart-dropdown li {
+  padding: 4px 0;
+  font-size: 14px;
+  border-bottom: 1px dotted #eee;
+}
+
+.cart-dropdown p {
+  margin: 8px 0 0;
+}
+.button {
+  padding: 8px 18px;
+  border: none;
+  background-color: #ffa500;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  align-content: centre;
+  margin-left: 550px;
+  bottom: 50px;
+  margin-top:20px ;
+}
+.btn:hover {
+  background-color: #ff8000;
+}
+.butadd{
+  background-color: #ffc107;
+  color: black;
+  border:#ff8000;
+box-shadow: #ff8000;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition:0.3 ease;
+  animation: bounce 2s infinite;
+ padding: 8px 18px;
+}
+.butadd:hover{
+  background-color: #ff8000;
+}
+.reviews-container {
+  background-color: #111;
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+}
+
+.reviews-heading {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #ffa500;
+}
+
+/* Form styles */
+.review-form {
+  background-color: #1a1a1a;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.1);
+}
+
+.review-form input,
+.review-form textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  resize: none;
+}
+
+.review-form textarea {
+  min-height: 100px;
+}
+
+.review-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #ffa500;
+  color: #111;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.review-form button:hover {
+  background-color: #ff8c00;
+}
+
+.star-select {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Carousel styles */
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.reviews-carousel {
+  display: flex;
+  gap: 25px;
+  overflow: hidden;
+  max-width: 1000px;
+}
+
+.review-card {
+  background-color: #222;
+  border-radius: 15px;
+  padding: 40px 25px;
+  min-width: 280px;
+  max-width: 300px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.2);
+}
+
+.review-card:hover {
+  transform: scale(1.03);
+}
+
+.review-text {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.review-name {
+  font-style: italic;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.review-stars {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+/* Carousel controls */
+.carousel-btn {
+  background-color: #ffa500;
+  color: #111;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background-color: #ff8c00;
+}
+
+/* Delete button */
+.delete-btn {
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: transform 0.2s ease;
+}
+
+.delete-btn:hover {
+  transform: scale(1.2);
+  color: #ff1a1a;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .reviews-carousel {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .review-card {
+    min-width: 250px;
+  }
+
+  .carousel-btn {
+    display: none;
+  }
+}
+.delete-btn {
+  background: none;
+  border: none;
+  color: #ff4d4d;
+  font-size: 1.3rem;
+  cursor: pointer;
+  margin-top: 10px;
+  align-self: flex-end;
+  transition: transform 0.2s ease;
+}
+
+.delete-btn:hover {
+  transform: scale(1.3);
+  color: #ff1a1a;
 }
