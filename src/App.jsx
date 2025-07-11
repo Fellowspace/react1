@@ -4,6 +4,9 @@ import Home from './components/Home';
 import About from './components/About';
 import Menu from './components/Menu';
 import Reviews from './components/Reviews';
+import Blogs from "./components/Blogs";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 import '@fontsource/roboto';
 import 'typeface-poppins';
@@ -79,7 +82,9 @@ const App = () => {
   setSearchQuery={setSearchQuery} // ✅ add this
 />
 <Reviews/>
-
+<Blogs/>
+<Contact/>
+<Footer/>
 
     </div>
   );
