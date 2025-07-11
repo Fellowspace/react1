@@ -26,23 +26,27 @@ const allMenuItems = [
 const Menu = ({ addToCart, searchQuery, setSearchQuery }) => {
   const itemRefs = useRef({});
   const sectionRef = useRef();
-  const notFoundRef = useRef(); // 🔴 New
+  const notFoundRef = useRef();
+
   const [itemsToRender, setItemsToRender] = useState(allMenuItems);
   const [notAvailable, setNotAvailable] = useState(false);
+  const [searchActive, setSearchActive] = useState(false); // ✅ new
 
-  // 🔁 Function to handle "Item Not Found"
+  // 🔍 Function: when no match found
   const itemNotFound = () => {
     setItemsToRender([]);
     setNotAvailable(true);
+    setSearchActive(false);
     setTimeout(() => {
       notFoundRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-    }, 100); // slight delay to ensure ref is mounted
+    }, 100);
   };
 
-  // 🔁 Reset menu handler (button)
+  // 🔄 Function: reset to full menu
   const resetMenu = () => {
     setItemsToRender(allMenuItems);
     setNotAvailable(false);
+    setSearchActive(false);
     setSearchQuery("");
     sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
@@ -51,6 +55,7 @@ const Menu = ({ addToCart, searchQuery, setSearchQuery }) => {
     if (!searchQuery || searchQuery.trim() === "") {
       setItemsToRender(allMenuItems);
       setNotAvailable(false);
+      setSearchActive(false);
       return;
     }
 
@@ -61,7 +66,10 @@ const Menu = ({ addToCart, searchQuery, setSearchQuery }) => {
     if (match) {
       setItemsToRender([match]);
       setNotAvailable(false);
-      itemRefs.current[match.id]?.scrollIntoView({ behavior: "smooth", block: "center" });
+      setSearchActive(true);
+      setTimeout(() => {
+        itemRefs.current[match.id]?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 150);
     } else {
       itemNotFound();
     }
@@ -73,7 +81,7 @@ const Menu = ({ addToCart, searchQuery, setSearchQuery }) => {
         our <span>menu</span>
       </h1>
 
-      {/* ❌ Not Found Message */}
+      {/* ❌ Item Not Found Message */}
       {notAvailable && (
         <div
           ref={notFoundRef}
@@ -87,7 +95,7 @@ const Menu = ({ addToCart, searchQuery, setSearchQuery }) => {
           }}
         >
           <p style={{ color: "red", fontWeight: "bold", fontSize: "18px" }}>
-             Item not available
+            Item not available
           </p>
           <button className="butadd" onClick={resetMenu}>
             Back to Menu
@@ -95,7 +103,24 @@ const Menu = ({ addToCart, searchQuery, setSearchQuery }) => {
         </div>
       )}
 
-      {/* Menu Items Grid */}
+      {/* 🟨 View Full Menu Button */}
+      {searchActive && !notAvailable && (
+        <div style={{ textAlign: "center", marginBottom: "20px" }}>
+          <button
+            className="butadd"
+            onClick={resetMenu}
+            style={{
+              padding: "10px 20px",
+              fontSize: "1rem",
+              marginBottom: "20px",
+            }}
+          >
+            View Full Menu
+          </button>
+        </div>
+      )}
+
+      {/* 🟩 Menu Cards Grid */}
       <div className="menu-grid">
         {itemsToRender.map((item) => (
           <div
@@ -117,7 +142,7 @@ const Menu = ({ addToCart, searchQuery, setSearchQuery }) => {
       <br />
       <br />
       <h3 style={{ textAlign: "center" }}>
-         Delivery service available with 20% off
+        Delivery service available with 20% off
       </h3>
     </section>
   );
