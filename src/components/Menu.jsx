@@ -77,7 +77,7 @@ const Menu = ({ addToCart, searchQuery, setSearchQuery }) => {
 
   return (
     <section className="menu" id="menu" ref={sectionRef}>
-      <h1 className="heading">
+      <h1 className="heading glow-text">
         our <span>menu</span>
       </h1>
 
