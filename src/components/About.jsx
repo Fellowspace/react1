@@ -19,7 +19,7 @@ const About = () => {
               We make ordering easy with our user-friendly online menu and fast delivery service.
               Customize your meal, track your order in real time, and enjoy exclusive deals—just a click away!
             </p>
-            <button className="btn bounce learn-more"><a href="#blogs" className="butadd animation: bounce   ">Learn-more</a></button>
+            <button className="btn bounce learn-more"><a href="#blogs" className="color">Learn-more</a></button>
           </div>
           <div className="about-image ">
             <img src={aboutImage} className="bounceIn"  alt="Bowl of noodles" />
