@@ -84,7 +84,7 @@ const Reviews = () => {
     <div className="reviews-container" id="reviews">
 
     
-      <h2 className="reviews-heading">Customer Reviews</h2>
+      <h2 className="heading glow-text">Customer Reviews</h2>
 
       <form className="review-form" onSubmit={handleSubmit}>
         <input
