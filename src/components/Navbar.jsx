@@ -1,3 +1,4 @@
+// Navbar.jsx
 import React, { useRef, useState, useEffect } from "react";
 import Logo from "../assets/logo.jpg";
 import '@fontsource/roboto';
@@ -11,6 +12,9 @@ const Navbar = ({ cartCount, toggleCart, setSearchQuery }) => {
   const searchHandler = () => {
     searchRef.current.classList.toggle("active");
     inputRef.current.focus();
+    // Ensure cart dropdown closes when search opens
+    toggleCart(false); // Pass false to explicitly close cart if it's open
+    setMenuOpen(false); // Close mobile menu if search opens
   };
 
   const handleSearchKeyDown = (e) => {
@@ -22,19 +26,39 @@ const Navbar = ({ cartCount, toggleCart, setSearchQuery }) => {
     }
   };
 
+  // Close menus/forms when clicking outside
   useEffect(() => {
-    const handleOutside = (e) => {
-      if (!e.target.closest('.navbar')) setMenuOpen(false);
+    const handleOutsideClick = (e) => {
+      // If clicking outside the navbar area itself
+      if (!e.target.closest('.navbar')) {
+        setMenuOpen(false);
+        searchRef.current.classList.remove("active");
+        // We don't control toggleCart here directly, as it's passed from App
+        // App's toggleCart already handles its state.
+      }
     };
-    document.addEventListener("click", handleOutside);
-    return () => document.removeEventListener("click", handleOutside);
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
 
   const toggleMobileMenu = () => {
     setMenuOpen(prev => !prev);
+    // Close search and cart dropdown if mobile menu opens
+    searchRef.current.classList.remove("active");
+    toggleCart(false); // Explicitly close cart
   };
 
   const handleLinkClick = () => {
+    setMenuOpen(false);
+    // Also close search and cart dropdown when navigating
+    searchRef.current.classList.remove("active");
+    toggleCart(false);
+  };
+
+  const handleCartIconClick = () => {
+    toggleCart(); // Toggle cart visibility
+    // Close search and mobile menu if cart opens
+    searchRef.current.classList.remove("active");
     setMenuOpen(false);
   };
 
@@ -56,7 +80,7 @@ const Navbar = ({ cartCount, toggleCart, setSearchQuery }) => {
 
         <div className="icons">
           <FiSearch className="nav-icon" onClick={searchHandler} />
-          <div onClick={toggleCart} style={{ position: "relative", cursor: "pointer" }}>
+          <div onClick={handleCartIconClick} style={{ position: "relative", cursor: "pointer" }}>
             <FiShoppingCart className="nav-icon" />
             {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
           </div>
