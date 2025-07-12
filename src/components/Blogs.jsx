@@ -49,7 +49,7 @@ const Blogs = () => {
 
   return (
     <section className="blogs" id="blogs">
-      <h1 className="heading">
+      <h1 className="heading glow-text">
         our <span>blogs</span>
       </h1>
 
