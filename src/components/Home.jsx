@@ -1,21 +1,36 @@
-import React from 'react'
+
+
+import { useEffect } from 'react';
 import Background from '../assets/images/bg.jpg'
 import Roundimg from'../assets/rm1.png'
 import '@fontsource/roboto';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 const Home = () => {
+  useEffect(() => {
+  AOS.init({ duration: 1200 });
+}, []);
   return ( 
     <>
     <section className="home" id="home">
        
 <div className="home-content ">
-    <h1>
+    <h1 className="glow-text" data-aos="fade-right"
+  data-aos-duration="3000"
+  data-aos-delay="500"
+  data-aos-easing="ease-in-out">
         FRESH <span className="highlight ">FOOD IN THE</span> MORNING
     </h1>
-    <p > Satisfy your cravings with our mouth-watering, freshly prepared dishes."
+    <p className="glow-text" data-aos="fade-up"
+  data-aos-duration="2500"
+  data-aos-delay="800"
+  data-aos-easing="ease-in-out" > Satisfy your cravings with our mouth-watering, freshly prepared dishes."
 "Bringing the taste of comfort and quality to every plate.</p>
- <button className="btn bounce"><a href="#menu" className="butadd animation: bounce  ">Get Yours Now</a></button>
+ <div className="get-yours-wrapper">
+  <button className="get-yours-btn">
+    <a href="#menu" className="color">Get Yours Now</a>
+  </button>
+</div>
   </div>
 
 
